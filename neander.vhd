@@ -17,7 +17,7 @@ entity neander is
 
 
     );
-end neander;
+end  entity neander;
 architecture all of neander is
     --memoria 
     type mem is array (0 to 15) of std_logic_vector(7 downto 0);--vetor de 16 posições de 8 bits
@@ -94,11 +94,13 @@ architecture all of neander is
                         RDM<=memoria(to_integer(unsigned(PC)));--PODE SER TIRADO DO MUX TALVEZ
                         decoder<=RDM(7 downto 4);--DECODIFICADOR PEGA OS 4 BITS MAIS SIGNIFICATIVOS DO RDM
                     
-                    
+                    end if;
+            
 
                  
                 if en_ULA='1' then
                         ACC<=mux_ula;
-                end if
-
-                end process
+                end if;
+            end if;
+        end process;
+                end architecture all;
